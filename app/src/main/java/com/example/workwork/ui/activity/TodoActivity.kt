@@ -21,9 +21,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class TodoActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var todoDataBase: TodoDataBase
-
     private lateinit var activityMainBinding: ActivityMainBinding
     private lateinit var todoViewModel: TodoViewModel
     private lateinit var adapter: TodoAdapter
@@ -34,14 +31,15 @@ class TodoActivity : AppCompatActivity() {
         setContentView(activityMainBinding.root)
 
         todoViewModel = ViewModelProvider(this)[TodoViewModel::class.java]
+
         setUpRecyclerView()
 
-        todoViewModel.getAllItem().observe(this, Observer {
-            adapter.submitList(it)
+        todoViewModel.getAllItem().observe(this, Observer {list->
+            adapter.submitList(ArrayList(list.map{it.copy()}))
         })
 
         activityMainBinding.addTodoBtn.setOnClickListener {
-            ToDoItemDialog(this, object : AddDialogListener{
+            ToDoItemDialog(this, object : AddDialogListener {
                 override fun onAddButtonClick(item: TodoItem) {
                     todoViewModel.upsert(item)
                 }
@@ -51,14 +49,9 @@ class TodoActivity : AppCompatActivity() {
     }
 
     private fun setUpRecyclerView() {
+
         activityMainBinding.apply {
-            adapter = TodoAdapter(onEventDelete = {
-                Toast.makeText(this@TodoActivity, "delete", Toast.LENGTH_SHORT).show()
-            }, onEventMinus ={
-                Toast.makeText(this@TodoActivity, "Minus", Toast.LENGTH_SHORT).show()
-            }, onEventPlus ={
-                Toast.makeText(this@TodoActivity, "Plus", Toast.LENGTH_SHORT).show()
-            }, viewModel = todoViewModel)
+            adapter = TodoAdapter(viewModel = todoViewModel)
         }
 
         activityMainBinding.itemRv.layoutManager = LinearLayoutManager(this)

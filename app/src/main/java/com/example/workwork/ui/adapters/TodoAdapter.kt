@@ -1,7 +1,9 @@
 package com.example.workwork.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -10,9 +12,7 @@ import com.example.workwork.db.model.TodoItem
 import com.example.workwork.ui.viewmodel.TodoViewModel
 
 class TodoAdapter(
-    val onEventMinus: (MySealClass) -> Unit,
-    val onEventDelete: (MySealClass) -> Unit,
-    val onEventPlus: (MySealClass) -> Unit, val viewModel: TodoViewModel
+     val viewModel: TodoViewModel
 ) : ListAdapter<TodoItem, TodoAdapter.RecyclerViewHolder>(DiffUtilCallbackClass()) {
 
     sealed class MySealClass {
@@ -26,17 +26,21 @@ class TodoAdapter(
         fun bind(item: TodoItem) {
             binding.apply {
                 tvName.text = item.name
-                tvAmount.text = "${item.amount}"
+                tvAmount.text = item.amount.toString()
+
                 ivMinus.setOnClickListener {
-                    item.amount++
-                    viewModel.upsert(item)
+                    if(item.amount > 0){
+                        Log.d("The abhishek Oza","$item")
+                        viewModel.upsert(item.copy(amount = item.amount-1))
+                    }
                 }
+
                 ivDelete.setOnClickListener {
                     viewModel.delete(item)
                 }
+
                 ivPlus.setOnClickListener {
-                    item.amount++
-                    viewModel.upsert(item)
+                    viewModel.upsert(item.copy(amount = item.amount+1))
                 }
 
             }

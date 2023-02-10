@@ -8,10 +8,10 @@ import com.example.workwork.db.model.TodoItem
 interface TodoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun upsert(item: TodoItem)
+    suspend fun upsert(item: TodoItem)
 
     @Delete
-    fun delete(item: TodoItem)
+    suspend fun delete(item: TodoItem)
 
     @Query(value = "SELECT * FROM todo_item")
     fun getAllTodoItems(): LiveData<List<TodoItem>>

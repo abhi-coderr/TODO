@@ -11,6 +11,7 @@ class ToDoItemDialog(context: Context, var addDialogListener : AddDialogListener
 
     private lateinit var dialogItemTodoBinding : DialogItemTodoBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         dialogItemTodoBinding = DialogItemTodoBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -24,7 +25,7 @@ class ToDoItemDialog(context: Context, var addDialogListener : AddDialogListener
                 return@setOnClickListener
             }
 
-            val item = TodoItem(name = name, amount = amount.toInt())
+            val item = TodoItem(name = name, amount = amount.toInt(),)
             addDialogListener.onAddButtonClick(item)
             dismiss()
         }

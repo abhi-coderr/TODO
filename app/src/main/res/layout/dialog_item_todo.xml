@@ -7,17 +7,22 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/_300sdp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_16sdp">
+        android:paddingBottom="@dimen/_10ssp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add new task"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_14ssp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -50,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ADD"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_12ssp"
             android:layout_marginTop="@dimen/_16sdp"
             android:layout_marginEnd="@dimen/_5sdp"
             app:layout_constraintTop_toBottomOf="@id/editAmount"
@@ -61,11 +66,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CANCEL"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_12ssp"
             android:layout_marginTop="@dimen/_16sdp"
             android:layout_marginEnd="@dimen/_16sdp"
             app:layout_constraintEnd_toStartOf="@id/tvAdd"
             app:layout_constraintTop_toBottomOf="@id/editAmount" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 </layout>

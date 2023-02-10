@@ -6,6 +6,7 @@ import com.example.workwork.db.repository.TodoRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -15,14 +16,15 @@ class MyModule {
 
     @Provides
     @Singleton
-    fun provideRepository(dataBase: TodoDataBase): TodoRepository{
-        return TodoRepository(dataBase)
+    fun providerDataBase(@ApplicationContext context: Context): TodoDataBase{
+        return TodoDataBase(context)
     }
 
     @Provides
     @Singleton
-    fun providerDataBase(context: Context): TodoDataBase{
-        return TodoDataBase.invoke(context)
+    fun provideRepository(dataBase: TodoDataBase): TodoRepository{
+        return TodoRepository(dataBase)
     }
+
 
 }
