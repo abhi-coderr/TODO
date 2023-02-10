@@ -1,5 +1,6 @@
 package com.example.workwork.ui.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
@@ -39,11 +40,13 @@ class TodoActivity : AppCompatActivity() {
         })
 
         activityMainBinding.addTodoBtn.setOnClickListener {
-            ToDoItemDialog(this, object : AddDialogListener {
-                override fun onAddButtonClick(item: TodoItem) {
-                    todoViewModel.upsert(item)
-                }
-            }).show()
+//            ToDoItemDialog(this, object : AddDialogListener {
+//                override fun onAddButtonClick(item: TodoItem) {
+//                    todoViewModel.upsert(item)
+//                }
+//            }).show()
+            intent = Intent(applicationContext, AddTodoActivity::class.java)
+            startActivity(intent)
         }
 
     }
