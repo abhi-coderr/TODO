@@ -27,20 +27,11 @@ class TodoAdapter(
             binding.apply {
                 tvName.text = item.name
                 tvAmount.text = item.amount.toString()
-
-                ivMinus.setOnClickListener {
-                    if(item.amount > 0){
-                        Log.d("The abhishek Oza","$item")
-                        viewModel.upsert(item.copy(amount = item.amount-1))
-                    }
-                }
+                dateIndicator.text = item.dueDate.toString()
+                timeIndicator.text = item.dueTime.toString()
 
                 ivDelete.setOnClickListener {
                     viewModel.delete(item)
-                }
-
-                ivPlus.setOnClickListener {
-                    viewModel.upsert(item.copy(amount = item.amount+1))
                 }
 
             }

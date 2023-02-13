@@ -28,34 +28,39 @@
             tools:ignore="MissingConstraints">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/title_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_task_date"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/date_selector"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_13sdp"
-            android:hint="Due Date"
-            android:maxEms="@integer/material_motion_duration_long_2"
-            app:endIconMode="clear_text"
+            android:textSize="@dimen/_18sdp"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:drawableLeft="@drawable/ic_calendar_edit"
+            android:drawablePadding="@dimen/_16sdp"
+            android:text="Select Due Date"
+            app:layout_constraintStart_toStartOf="@id/input_task_title"
             app:layout_constraintTop_toBottomOf="@id/input_task_title"
-            app:startIconContentDescription="Title Task"
-            app:startIconDrawable="@drawable/ic_calendar_edit"
-            tools:ignore="MissingConstraints">
+            />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/date_add"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/time_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_18sdp"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:drawableLeft="@drawable/ic_clock"
+            android:drawablePadding="@dimen/_16sdp"
+            android:text="Select Due time"
+            app:layout_constraintStart_toStartOf="@id/date_selector"
+            app:layout_constraintTop_toBottomOf="@id/date_selector"
+            />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_new_todo_btn"

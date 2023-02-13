@@ -11,7 +11,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TodoViewModel @Inject constructor(private var todoRepository: TodoRepository) : ViewModel() {
+public class TodoViewModel @Inject constructor(private var todoRepository: TodoRepository) :
+    ViewModel() {
 
     fun upsert(item: TodoItem) = viewModelScope.launch {
         todoRepository.upsert(item)
