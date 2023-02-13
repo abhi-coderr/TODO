@@ -10,6 +10,8 @@ data class TodoItem(
     var id: Int? = null,
     @ColumnInfo(name = "item_name")
     var name: String,
+    @ColumnInfo(name = "item_is_checked")
+    var isChecked: Boolean? = null,
     @ColumnInfo(name = "item_amount")
     var amount: Int? = null,
     @ColumnInfo(name = "item_due_date")

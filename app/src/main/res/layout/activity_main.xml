@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="todoViewModel"
+            type="com.example.workwork.ui.viewmodel.TodoViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,11 +20,23 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/item_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:setAdapter="@{todoViewModel.todoAdapter}"
+            android:paddingBottom="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/completed_items_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:setAdapter="@{todoViewModel.todoCompleteAdapter}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/_36sdp"
+            />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_todo_btn"
@@ -32,7 +48,7 @@
             android:backgroundTint="@android:color/holo_red_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            />
+            android:contentDescription="TODO" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
